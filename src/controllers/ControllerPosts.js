@@ -8,11 +8,13 @@ module.exports = {
       titulo: data.titulo,
       conteudo: data.conteudo,
     })
-      .then(() => {
-        response.send("Cadastro feito");
+      .then((res) => {
+        response.json({
+          id:res.dataValues.id
+        });
       })
       .catch((err) => {
-        response.send("Falha no cadastro", err);
+        response.json({error: err, menssage: "Falha no cadastro"});
       });
   },
   list: (request, response) => {
@@ -21,16 +23,16 @@ module.exports = {
         response.json(posts);
       })
       .catch((err) => {
-        response.send("Falha na listagem", err);
+        response.json({error: err, menssage: "Falha na listagem"});
       });
   },
   delete: (request, response) => {
     Postagens.destroy({ where: { id: request.params.id } })
       .then(() => {
-        response.send("Deletado com sucesso");
+        response.json({menssage: "Deletado com sucesso"});
       })
       .catch((err) => {
-        response.send("Erro ao deletar", err);
+        response.json({error: err, menssage: "Erro ao deletar"});
       });
   },
 };

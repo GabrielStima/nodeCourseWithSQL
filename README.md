@@ -6,7 +6,8 @@ This project was made with the premise of adapting with the node so that I can b
 
 ###   Application
 
-It is an API in **node.js** that creates, lists and deletes posts, using SQL Server as database. Route validations are also performed using *celebrate* and unit tests and integration with *jest*.
+It is an API in **node.js** that creates, lists and deletes posts, using SQL Server as a database. And to store sensitive data like bank name and password, dotenv was used.
+Route validations are performed using *celebrate* and unit tests and integration tests with *jest*. To use *jest* without affecting the original database, a database was created for testing and is triggered by running the test script, because in it I used *cross-env* to set a variable that changes the database.
 
 ### Project dependencies
 
